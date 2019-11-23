@@ -1,0 +1,26 @@
+{
+  "name": "web-usb-etch-a-sketch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charliedavison/web-usb-etch-a-sketch.git"
+  },
+  "author": "Charlie Davison",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charliedavison/web-usb-etch-a-sketch/issues"
+  },
+  "homepage": "https://github.com/charliedavison/web-usb-etch-a-sketch#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "escpos": "^2.5.2",
+    "express": "^4.17.1"
+  }
+}

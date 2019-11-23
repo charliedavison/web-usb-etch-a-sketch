@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
+<h3>Up, Down, Left, Right arrows to draw.</h3>
 <div id="sketch-container" class="sketch__container">
     <canvas id="sketch-canvas" class="sketch__canvas">
     </canvas>
@@ -14,6 +14,11 @@
                 <rect x="42" y="0" width="3" height="30" class="sketch__knob-indicator"></rect>
             </svg>
         </div>
+
+        <div>
+            <a role="button" class="sketch__button" onclick="resetCanvas()">Reset</a>
+            <a role="button" class="sketch__button" onclick="printNode()">Print via Node</a>
+        </div>
         <div id="knob-right" class="sketch__knob">
             <svg>
                 <rect x="42" y="0" width="3" height="30" class="sketch__knob-indicator"></rect>
@@ -22,7 +27,6 @@
     </div>
 </div>
 
-<button onClick="resetCanvas()">Reset</button>
 <script type="text/javascript" src="etch-a-sketch.js"></script>
 </body>
 </html>

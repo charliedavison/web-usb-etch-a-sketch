@@ -1,6 +1,8 @@
 html,
 body {
     background-color: beige;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
 .sketch__container {
@@ -45,6 +47,18 @@ body {
 
 .sketch__knob-indicator {
     fill: #7d3e34;
+}
+
+.sketch__button {
+    display: block;
+    width: 130px;
+    margin-bottom: 12px;
+    background-color: #7d3e34;
+    color: #FFFFFF;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #4b2521;
 }
 
 @keyframes reset {

@@ -1,13 +1,4 @@
-const VALID_KEYS = [
-  'ArrowUp',
-  'ArrowDown',
-  'ArrowLeft',
-  'ArrowRight',
-  'w',
-  'a',
-  's',
-  'd'
-];
+const SERVER_URL = "http://localhost:3000/print";
 
 const START_PEN_X = 150;
 const START_PEN_Y = 75;
@@ -19,6 +10,7 @@ let penPositionX, penPositionY;
 
 const sketchCanvas = document.getElementById('sketch-canvas');
 const ctx = sketchCanvas.getContext('2d');
+ctx.lineWidth = 1;
 
 const sketchContainer = document.getElementById('sketch-container');
 const leftKnob = document.getElementById('knob-left');
@@ -53,8 +45,6 @@ const moveUp = () => {
 };
 
 const onKeyDown = (event) => {
-   if (!VALID_KEYS.includes(event.key)) return;
-
    switch (event.key) {
      case 'ArrowUp':
      case 'w':
@@ -90,6 +80,26 @@ const resetCanvas = () => {
 
   ctx.beginPath();
   ctx.moveTo(penPositionX, penPositionY);
+};
+
+const printNode = () => {
+  const sketchData = sketchCanvas.toDataURL('image/png');
+  const req = new XMLHttpRequest();
+  req.open("POST", SERVER_URL);
+  req.setRequestHeader("Content-type", "image/png");
+  req.onload = () => {
+    if (req.readyState === 4) {
+      if (req.status === 200) {
+        console.log('Successfully printed');
+      } else {
+        alert('An error occurred!');
+        console.error(req.statusText);
+      }
+    }
+  };
+
+  req.send(sketchData);
+
 };
 
 resetCanvas();
