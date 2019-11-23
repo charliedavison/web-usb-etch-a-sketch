@@ -90,7 +90,7 @@ const printNode = () => {
   req.onload = () => {
     if (req.readyState === 4) {
       if (req.status === 200) {
-        console.log('Successfully printed');
+        alert('Successfully printed');
       } else {
         alert('An error occurred!');
         console.error(req.statusText);
