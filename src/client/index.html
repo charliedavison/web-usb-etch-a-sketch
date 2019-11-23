@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <title>WebUSB Etch-A-Sketch</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div id="sketch-container" class="sketch__container">
+    <canvas id="sketch-canvas" class="sketch__canvas">
+    </canvas>
+    <div class="sketch__footer">
+        <div id="knob-left" class="sketch__knob">
+            <svg>
+                <rect x="42" y="0" width="3" height="30" class="sketch__knob-indicator"></rect>
+            </svg>
+        </div>
+        <div id="knob-right" class="sketch__knob">
+            <svg>
+                <rect x="42" y="0" width="3" height="30" class="sketch__knob-indicator"></rect>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<button onClick="resetCanvas()">Reset</button>
+<script type="text/javascript" src="etch-a-sketch.js"></script>
+</body>
+</html>

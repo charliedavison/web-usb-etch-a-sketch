@@ -1,0 +1,60 @@
+html,
+body {
+    background-color: beige;
+}
+
+.sketch__container {
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    left: calc(50% - 400px);
+    background-color: #cb5c4d;
+}
+
+.sketch__canvas {
+    background-color: #FFFFFF;
+    position: relative;
+    margin: 40px auto 0;
+    display: block;
+    height: 400px;
+    width: 650px;
+}
+
+.sketch__footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 650px;
+}
+
+.sketch__knob {
+    background-color: #FFFFFF;
+    border-radius: 45px;
+    height: 86px;
+    width: 86px;
+    border: 4px solid #7d3e34;
+    transform: rotate(0deg);
+}
+
+.sketch__knob > svg {
+    height: 30px;
+    width: 45px;
+}
+
+.sketch__knob-indicator {
+    fill: #7d3e34;
+}
+
+@keyframes reset {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.reset-sketch {
+    animation: reset 0.5s infinite;
+}
