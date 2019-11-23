@@ -13,8 +13,6 @@ const print = (buffer, callback) => {
       printer.text('\n').cut().close();
       callback();
     });
-
-
   });
 };
 
