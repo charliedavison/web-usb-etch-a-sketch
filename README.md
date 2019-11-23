@@ -11,10 +11,6 @@ I had some problems getting WebUSB working in Windows (Didn't bring my work lapt
 
 The WebUSB part will come - but maybe only for MacOS.
 
-![Sketch](./img/sketch.PNG)
-
-![Printer](./img/printer.jpg)
-
 # How?
 
 - npm install
@@ -22,6 +18,12 @@ The WebUSB part will come - but maybe only for MacOS.
 - Open src/client/index.html in a browser
 
 May require some settings changes in `/src/server/print.js` to work with your specific printer/system setup.
+
+# Example
+
+![Sketch](./img/sketch.PNG)
+
+![Printer](./img/printer.jpg)
 
 # Why?
 Why not?
