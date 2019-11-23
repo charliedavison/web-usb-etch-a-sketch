@@ -15,6 +15,13 @@ The WebUSB part will come - but maybe only for MacOS.
 
 ![Printer](./img/printer.jpg)
 
+# How?
+
+- npm install
+- npm start
+- Open src/client/index.html in a browser
+
+May require some settings changes in `/src/server/print.js` to work with your specific printer/system setup.
 
 # Why?
 Why not?
