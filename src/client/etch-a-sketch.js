@@ -1,10 +1,15 @@
 const SERVER_URL = "http://localhost:3000/print";
 
+// Start in the middle of the canvas
 const START_PEN_X = 150;
 const START_PEN_Y = 75;
 
-let leftKnobDeg = '0';
-let rightKnobDeg = '0';
+// The speed at which the knobs rotate
+// Visually more satisfying if its a bit quicker.
+const KNOB_TURN_SPEED = 10;
+
+let leftKnobDeg = 0;
+let rightKnobDeg = 0;
 
 let penPositionX, penPositionY;
 
@@ -17,28 +22,28 @@ const leftKnob = document.getElementById('knob-left');
 const rightKnob = document.getElementById('knob-right');
 
 const moveRight = () => {
-  leftKnobDeg++;
+  leftKnobDeg += KNOB_TURN_SPEED;
   leftKnob.style.transform = `rotate(${leftKnobDeg}deg)`;
   ctx.lineTo(penPositionX++, penPositionY);
   ctx.stroke();
 };
 
 const moveLeft = () => {
-  leftKnobDeg--;
+  leftKnobDeg -= KNOB_TURN_SPEED;
   leftKnob.style.transform = `rotate(${leftKnobDeg}deg)`;
   ctx.lineTo(penPositionX--, penPositionY);
   ctx.stroke();
 };
 
 const moveDown = () => {
-  rightKnobDeg--;
+  rightKnobDeg -= KNOB_TURN_SPEED;
   rightKnob.style.transform = `rotate(${rightKnobDeg}deg)`;
   ctx.lineTo(penPositionX, penPositionY++);
   ctx.stroke();
 };
 
 const moveUp = () => {
-  rightKnobDeg++;
+  rightKnobDeg += KNOB_TURN_SPEED;
   rightKnob.style.transform = `rotate(${rightKnobDeg}deg)`;
   ctx.lineTo(penPositionX, penPositionY--);
   ctx.stroke();
