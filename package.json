@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server/app.js",
+    "watch": "parcel watch src/client/etch-a-sketch.js --out-file dist/etch-a-sketch.js --no-hmr",
+    "build": "parcel build src/client/etch-a-sketch.js --out-file dist/etch-a-sketch.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,6 +15,9 @@
   },
   "author": "Charlie Davison",
   "license": "ISC",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
   "bugs": {
     "url": "https://github.com/charliedavison/web-usb-etch-a-sketch/issues"
   },
@@ -20,7 +25,11 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "esc-pos-encoder": "^1.2.0",
     "escpos": "^2.5.2",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
   }
 }

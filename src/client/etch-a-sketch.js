@@ -1,4 +1,12 @@
+import EscPosEncoder from 'esc-pos-encoder';
+
 const SERVER_URL = "http://localhost:3000/print";
+
+const PRINTER_INTERFACE = 0x00;
+const PRINTER_ENDPOINT = 1;
+const PRINTER_VENDOR_ID = 0x0416;
+const PRINTER_PRODUCT_ID = 0x5011;
+
 
 // Start in the middle of the canvas
 const START_PEN_X = 150;
@@ -20,6 +28,10 @@ ctx.lineWidth = 1;
 const sketchContainer = document.getElementById('sketch-container');
 const leftKnob = document.getElementById('knob-left');
 const rightKnob = document.getElementById('knob-right');
+const resetButton = document.getElementById('reset-button');
+const printNodeButton = document.getElementById('print-node-button');
+const printUSBButton = document.getElementById('print-usb-button');
+
 
 const moveRight = () => {
   leftKnobDeg += KNOB_TURN_SPEED;
@@ -104,8 +116,62 @@ const printNode = () => {
   };
 
   req.send(sketchData);
+};
+
+const printWebUSB = async () => {
+  const options = {
+    filters: [
+      {
+        vendorId: PRINTER_VENDOR_ID,
+        productId: PRINTER_PRODUCT_ID
+      }
+    ]
+  };
+
+  try {
+    const printer = await navigator.usb.requestDevice(options);
+
+    await printer.open();
+    await printer.selectConfiguration(1);
+    await printer.claimInterface(PRINTER_INTERFACE);
+    await printer.controlTransferOut({
+      requestType: 'class',
+      recipient: 'interface',
+      request: 0x22,
+      value: 0x01,
+      index: PRINTER_INTERFACE
+    });
+  } catch (e) {
+    console.error('Could not initialise web usb device:', e);
+    return;
+  }
+
+  const imageSource = await getWebUSBImageSource();
+  const posEncoder = new EscPosEncoder();
+  const encodedImage = posEncoder
+      .initialize()
+      .image(imageSource, 320, 320, 'threshold')
+      .encode();
+
+  printer.transferOut(PRINTER_ENDPOINT, encodedImage);
 
 };
 
+const getWebUSBImageSource = () => {
+  return new Promise(resolve => {
+    sketchCanvas.toBlob(blob => {
+      const blobURL = URL.createObjectURL(blob);
+      const image = new Image();
+      image.src = blobURL;
+      image.onload = () => resolve(image);
+    });
+  });
+};
+
 resetCanvas();
+
 document.addEventListener('keydown', onKeyDown);
+
+resetButton.onclick = resetCanvas;
+printNodeButton.onclick = printNode;
+printUSBButton.onclick = printWebUSB;
