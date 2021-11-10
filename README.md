@@ -1,5 +1,5 @@
 # web-usb-etch-a-sketch
-A HTML5 canvas Etch a sketch with support for printing to a thermal printer via WebUSB or Node server.
+A saturday morning project - HTML5 canvas Etch a sketch with support for printing to a thermal printer via WebUSB or Node server.
 
 Inspired by a talk at FFConf Brighton by Suz Hinton (@noopkat).
 
