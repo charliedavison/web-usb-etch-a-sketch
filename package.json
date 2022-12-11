@@ -27,7 +27,7 @@
     "cors": "^2.8.5",
     "esc-pos-encoder": "^1.2.0",
     "escpos": "^2.5.2",
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
